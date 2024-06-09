@@ -1,0 +1,36 @@
+.search-handler {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.search-handler input {
+    width: 50%;
+    height: 30px;
+    padding: 10px;
+    background-color: var(--tertiary-color);
+    color: var(--font-color);
+    
+    border: none;
+    border-radius: 5px;
+}
+
+.search-handler input::placeholder{
+    color: var(--quaternary-color);
+}
+
+.search-handler input:focus{
+    outline: none;
+}
+
+.search-handler button {
+    padding: 10px;
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.loading-screen{
+    text-align: center;
+}

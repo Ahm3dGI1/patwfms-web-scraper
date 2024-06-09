@@ -1,0 +1,33 @@
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.product {
+  border: 1px solid var(--tertiary-color);
+  border-radius: 10px;
+  background-color: var(--tertiary-color);
+  padding: 20px;
+  margin: 10px;
+  max-width: 200px;
+  text-align: left;
+}
+
+.product img {
+  max-width: 100%;
+}
+
+.product h2 {
+  font-size: 1.2em;
+}
+
+.product p {
+  font-size: 1em;
+  color: var(--font-color);
+}
+
+.product a {
+  text-decoration: none;
+  color: var(--font-color);
+}
