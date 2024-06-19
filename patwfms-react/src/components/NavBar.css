@@ -27,3 +27,7 @@
     margin: 10px;
     text-decoration: none;
 }
+
+.nav-item .active{
+    color: var(--quaternary-color);
+}

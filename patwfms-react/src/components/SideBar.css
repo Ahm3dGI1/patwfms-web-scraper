@@ -1,11 +1,3 @@
-:root {
-    --primary-color: #404258;
-    --secondary-color: #474E68;
-    --tertiary-color: #50577A;
-    --quaternary-color: #6B728E;
-    --font-color: #F5F5F5;
-}
-
 * {
     padding: 0;
     margin: 0;
@@ -15,7 +7,7 @@
 
 .sidebar {
     min-height: 150vh;
-    width: 300px;
+    min-width: 225px;
     background-color: var(--tertiary-color);
     padding: 20px;
 }

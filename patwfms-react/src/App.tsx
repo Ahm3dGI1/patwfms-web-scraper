@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
+
 import './App.css';
+
 import SearchHandler from './components/SearchHandler';
 import ProductsGrid from './components/ProductGrid';
 import { fetchProducts } from './components/api';
 import { ProductType } from './components/Product';
 import SideBar from './components/SideBar';
 import NavBar from './components/NavBar';
+import RouterComponent from './providers/Router';
+
 
 const App: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState<string>('');
@@ -106,26 +111,28 @@ const App: React.FC = () => {
     setLoading(false);
   };
   return (
-    <div className="App">
-      <header className="header-container">
-        {/*Nav bar menu*/}
-        <NavBar />
-
-        {/* Search bar */}
-        <SearchHandler
-          searchQuery={searchQuery}
-          setSearchQuery={setSearchQuery}
-          handleSearch={handleSearch}
-          loading={loading}
-        />
-        <div className="web-title"><span>P</span>rices <span>A</span>cross <span>T</span>he <span>W</span>orld <span>F</span>or <span>M</span>inerva <span>S</span>tudents</div>
-        <div className="hum">cuz we are traveling like crazy</div>
-      </header>
-      <div className='main-container'>
-        <SideBar />
-        <ProductsGrid products={products} />
+    <Router>
+      <div className="App">
+        <header className="header-container">
+          <NavBar />
+          <RouterComponent />
+          <SearchHandler
+            searchQuery={searchQuery}
+            setSearchQuery={setSearchQuery}
+            handleSearch={handleSearch}
+            loading={loading}
+          />
+          <div className="web-title">
+            <span>P</span>rices <span>A</span>cross <span>T</span>he <span>W</span>orld <span>F</span>or <span>M</span>inerva <span>S</span>tudents
+          </div>
+          <div className="hum">cuz we are traveling like crazy</div>
+        </header>
+        <div className='main-container'>
+          <SideBar />
+          <ProductsGrid products={products} />
+        </div>
       </div>
-    </div>
+    </Router>
   );
 };
 
