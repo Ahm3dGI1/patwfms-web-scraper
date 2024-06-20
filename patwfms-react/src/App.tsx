@@ -7,7 +7,7 @@ import SearchHandler from './components/SearchHandler';
 import ProductsGrid from './components/ProductGrid';
 import { fetchProducts } from './components/api';
 import { ProductType } from './components/Product';
-import SideBar from './components/SideBar';
+import StoreCheck from './components/StoreCheck';
 import NavBar from './components/NavBar';
 import RouterComponent from './providers/Router';
 
@@ -16,6 +16,7 @@ const App: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [products, setProducts] = useState<ProductType[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
+  const [checkedStores, setCheckedStores] = useState<string[]>([]);
 
   const handleSearch = async () => {
     setLoading(true);
@@ -55,7 +56,21 @@ const App: React.FC = () => {
         name: 'Apple AirPods with Charging Case',
         price: '$128.98',
         url: 'https://www.amazon.com/Apple-AirPods-Charging-Latest-Model/dp/B07PXGQC1Q',
-        site: 'Amazon',
+        site: 'Other',
+      },
+      {
+        image: 'https://m.media-amazon.com/images/I/71zny7BTRlL._AC_UL320_.jpg',
+        name: 'Apple AirPods with Charging Case',
+        price: '$128.98',
+        url: 'https://www.amazon.com/Apple-AirPods-Charging-Latest-Model/dp/B07PXGQC1Q',
+        site: 'Other',
+      },
+      {
+        image: 'https://m.media-amazon.com/images/I/71zny7BTRlL._AC_UL320_.jpg',
+        name: 'Apple AirPods with Charging Case',
+        price: '$128.98',
+        url: 'https://www.amazon.com/Apple-AirPods-Charging-Latest-Model/dp/B07PXGQC1Q',
+        site: 'Other',
       },
       {
         image: 'https://m.media-amazon.com/images/I/71zny7BTRlL._AC_UL320_.jpg',
@@ -69,46 +84,33 @@ const App: React.FC = () => {
         name: 'Apple AirPods with Charging Case',
         price: '$128.98',
         url: 'https://www.amazon.com/Apple-AirPods-Charging-Latest-Model/dp/B07PXGQC1Q',
-        site: 'Amazon',
+        site: 'Walmart',
       },
       {
         image: 'https://m.media-amazon.com/images/I/71zny7BTRlL._AC_UL320_.jpg',
         name: 'Apple AirPods with Charging Case',
         price: '$128.98',
         url: 'https://www.amazon.com/Apple-AirPods-Charging-Latest-Model/dp/B07PXGQC1Q',
-        site: 'Amazon',
+        site: 'Walmart',
       },
       {
         image: 'https://m.media-amazon.com/images/I/71zny7BTRlL._AC_UL320_.jpg',
         name: 'Apple AirPods with Charging Case',
         price: '$128.98',
         url: 'https://www.amazon.com/Apple-AirPods-Charging-Latest-Model/dp/B07PXGQC1Q',
-        site: 'Amazon',
+        site: 'Walmart',
       },
       {
         image: 'https://m.media-amazon.com/images/I/71zny7BTRlL._AC_UL320_.jpg',
         name: 'Apple AirPods with Charging Case',
         price: '$128.98',
         url: 'https://www.amazon.com/Apple-AirPods-Charging-Latest-Model/dp/B07PXGQC1Q',
-        site: 'Amazon',
-      },
-      {
-        image: 'https://m.media-amazon.com/images/I/71zny7BTRlL._AC_UL320_.jpg',
-        name: 'Apple AirPods with Charging Case',
-        price: '$128.98',
-        url: 'https://www.amazon.com/Apple-AirPods-Charging-Latest-Model/dp/B07PXGQC1Q',
-        site: 'Amazon',
-      },
-      {
-        image: 'https://m.media-amazon.com/images/I/71zny7BTRlL._AC_UL320_.jpg',
-        name: 'Apple AirPods with Charging Case',
-        price: '$128.98',
-        url: 'https://www.amazon.com/Apple-AirPods-Charging-Latest-Model/dp/B07PXGQC1Q',
-        site: 'Amazon',
+        site: 'Walmart',
       }
     ]);
 
     setLoading(false);
+
   };
   return (
     <Router>
@@ -128,8 +130,8 @@ const App: React.FC = () => {
           <div className="hum">cuz we are traveling like crazy</div>
         </header>
         <div className='main-container'>
-          <SideBar />
-          <ProductsGrid products={products} />
+          <StoreCheck checkedStores={checkedStores} setCheckedStores={setCheckedStores} />
+          <ProductsGrid products={products} checkedStores={checkedStores} />
         </div>
       </div>
     </Router>

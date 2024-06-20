@@ -20,7 +20,7 @@ const Product: React.FC<ProductProps> = ({ product }) => {
             <h2>{product.name}</h2>
             <p>{product.price}</p>
             <a href={product.url} target="_blank" rel="noopener noreferrer">
-                View on Amazon
+                View on {product.site}
             </a>
         </div>
     );
