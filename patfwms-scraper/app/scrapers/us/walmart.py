@@ -4,8 +4,8 @@ import requests
 
 def scrape_walmart(query):
     # Construct URLs for search results using the user query
-    url1 = f'https://www.walmart.com/search?q={query.replace(" ", "%20")}'
-    url2 = f'https://www.walmart.com/search?q={query.replace(" ", "%20")}&sort=price_low'
+    url_base = f'https://www.walmart.com/search?q={query.replace(" ", "%20")}'
+    url_by_price = f'https://www.walmart.com/search?q={query.replace(" ", "%20")}&sort=price_low'
 
     # Define headers to mimic a browser request
     headers = {
@@ -17,23 +17,25 @@ def scrape_walmart(query):
     }
 
     # Send requests to fetch search results
-    response1 = requests.get(url1, headers=headers)
-    response2 = requests.get(url2, headers=headers)
+    response_base = requests.get(url_base, headers=headers)
+    response_by_price = requests.get(url_by_price, headers=headers)
 
-    if response1.status_code != 200:
-        print(f'Failed to fetch data on response 1: {response1.status_code}')
+    if response_base.status_code != 200:
+        print(
+            f'Failed to fetch data on response 1: {response_base.status_code}')
         return None
 
-    if response2.status_code != 200:
-        print(f'Failed to fetch data on response 2: {response2.status_code}')
+    if response_by_price.status_code != 200:
+        print(
+            f'Failed to fetch data on response 2: {response_by_price.status_code}')
         return None
 
     # Parse HTML content using BeautifulSoup
-    soup1 = BeautifulSoup(response1.text, 'html.parser')
-    soup2 = BeautifulSoup(response2.text, 'html.parser')
+    soup_base = BeautifulSoup(response_base.text, 'html.parser')
+    soup_by_price = BeautifulSoup(response_by_price.text, 'html.parser')
 
-    product_elements = soup1.select(
-        'div', {'class': 'h-100 pr4-xl'}) + soup2.select('div', {'class': 'h-100 pr4-xl'})
+    product_elements = soup_base.select(
+        'div', {'class': 'h-100 pr4-xl'}) + soup_by_price.select('div', {'class': 'h-100 pr4-xl'})
 
     products = []
     # Extract product details

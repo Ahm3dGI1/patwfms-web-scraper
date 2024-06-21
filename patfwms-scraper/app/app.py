@@ -1,8 +1,6 @@
-# patfwms-scraper/app/app.py
-
 from flask import Flask, request, jsonify
 from flask_cors import CORS  # Import CORS
-from scrapers.scrapeManager import scrape  # Import the scraping function
+import scrapers  # Import the scraping function
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
@@ -15,7 +13,12 @@ def scrape_amazon_endpoint():
     if not query:
         return jsonify({'error': 'No query parameter provided'}), 400
 
-    products = scrape(country, query)
+    if not country:
+        return jsonify({'error': 'No country parameter provided'}), 400
+
+    if country == 'us':
+        products = scrapers.scraper_us.scrape(query)
+
     return jsonify(products)
 
 
