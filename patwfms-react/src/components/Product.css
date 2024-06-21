@@ -1,7 +1,14 @@
-.products {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+.products-sec {
+  width: 100%; 
+  padding: 20px;
+}
+
+.products-grid{
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .product {

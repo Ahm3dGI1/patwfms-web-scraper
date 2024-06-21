@@ -1,4 +1,3 @@
-import React, { ChangeEvent } from 'react'
 import './StoreCheck.css'
 
 
@@ -6,12 +5,18 @@ import './StoreCheck.css'
 interface StoreCheckProps {
     checkedStores: string[];
     setCheckedStores: React.Dispatch<React.SetStateAction<string[]>>;
+    country: string;
 }
 
+const storeLists: { [key: string]: string[] } = {
+    US: ['Amazon', 'Walmart', 'Best Buy', 'Target', 'Other'],
+    Taiwan: ['PChome', 'Momo', 'Yahoo', 'Shopee'],
+    Korea: ['Gmarket', 'Coupang', '11st', 'Auction'],
+};
 
-const StoreCheck: React.FC<StoreCheckProps> = ({ checkedStores, setCheckedStores }) => {
+const StoreCheck: React.FC<StoreCheckProps> = ({ checkedStores, setCheckedStores, country }) => {
 
-    let stores = ['Amazon', 'Walmart', 'Best Buy', 'Target', 'Other']
+    const stores = storeLists[country];
 
     const handleCheck = (store: string) => {
         if (checkedStores.includes(store)) {
@@ -25,7 +30,7 @@ const StoreCheck: React.FC<StoreCheckProps> = ({ checkedStores, setCheckedStores
         <div className="sidebar">
             <div>
                 <h2>Stores</h2>
-                {stores.map((store, index) => (
+                {stores.map((store, _) => (
                     <div className="store-check">
                         <input
                             onClick={() => handleCheck(store)}
@@ -41,7 +46,7 @@ const StoreCheck: React.FC<StoreCheckProps> = ({ checkedStores, setCheckedStores
 
             <div className="sort-order">
                 <h2>Sort By</h2>
-                <select name="sort" id="sort">
+                <select name="sort" className="sort">
                     <option value="price">Price</option>
                     <option value="rating">Rating</option>
                     <option value="popularity">Popularity</option>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, useLocation } from 'react-router-dom';
 
 import './App.css';
 
@@ -18,12 +18,36 @@ const App: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [checkedStores, setCheckedStores] = useState<string[]>([]);
 
+  const location = useLocation();
+
+  const getCountryFromPath = () => {
+    const path = location.pathname;
+    switch (path) {
+      case '/taiwan':
+        return 'Taiwan';
+      case '/korea':
+        return 'Korea';
+      case '/argentina':
+        return 'Argentina';
+      case '/india':
+        return 'India';
+      case '/germany':
+        return 'Germany';
+      case '/japan':
+        return 'Japan';
+      default:
+        return 'US';
+    }
+  };
+
+  const country = getCountryFromPath();
+
   const handleSearch = async () => {
     setLoading(true);
     setProducts([]);
 
     try {
-      const data = await fetchProducts(searchQuery, "US");
+      const data = await fetchProducts(searchQuery, country);
       setProducts(data);
     } catch (error) {
       console.error('Error:', error);
@@ -130,7 +154,7 @@ const App: React.FC = () => {
           <div className="hum">cuz we are traveling like crazy</div>
         </header>
         <div className='main-container'>
-          <StoreCheck checkedStores={checkedStores} setCheckedStores={setCheckedStores} />
+          <StoreCheck checkedStores={checkedStores} setCheckedStores={setCheckedStores} country={country} />
           <ProductsGrid products={products} checkedStores={checkedStores} />
         </div>
       </div>

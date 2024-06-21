@@ -15,10 +15,12 @@ const ProductsGrid: React.FC<ProductsGridProps> = ({ products, checkedStores }) 
         : products;
 
     return (
-        <div className="products">
-            {filteredProducts.map((product, index) => (
-                <Product key={index} product={product} />
-            ))}
+        <div className="products-sec">
+            <div className="products-grid">
+                {filteredProducts.map((product, index) => (
+                    <Product key={index} product={product} />
+                ))}
+            </div>
         </div>
     );
 };

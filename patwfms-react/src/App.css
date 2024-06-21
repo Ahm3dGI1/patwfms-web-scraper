@@ -40,9 +40,8 @@
 }
 
 .main-container{
-  height: auto;
+  min-height: 100vh;
   background-color: var(--secondary-color);
   display: flex;
-  align-items: center;
   justify-content: space-between;
 }
