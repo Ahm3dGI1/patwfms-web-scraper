@@ -22,13 +22,13 @@ def scrape_ebay(query):
 
     if response_base.status_code != 200:
         print(
-            f'Failed to fetch data on response 1: {response_base.status_code}')
-        return None
+            f'Failed to fetch Ebay data on response 1: {response_base.status_code}')
+        return []
 
     if response_by_price.status_code != 200:
         print(
-            f'Failed to fetch data on response 2: {response_by_price.status_code}')
-        return None
+            f'Failed to fetch Ebay data on response 2: {response_by_price.status_code}')
+        return []
 
     # Parse HTML content using BeautifulSoup
     soup_base = BeautifulSoup(response_base.text, 'html.parser')
@@ -37,19 +37,15 @@ def scrape_ebay(query):
     product_elements = soup_base.select(
         'li', {'class': 's-item__wrapper'}) + soup_by_price.select('li', {'class': 's-item__wrapper'})
 
-    print(len(product_elements))
-
     products = []
     # Extract product details
     for product_element in product_elements:
 
-        title_tag = product_element.select_one('div', class_='s-item__title')
+        title_tag = product_element.select_one('div.s-item__title span')
 
-        price_tag = product_element.select_one(
-            'div', class_='item__price')
+        price_tag = product_element.select_one('span.s-item__price')
 
-        image_tag = product_element.select_one(
-            'img')
+        image_tag = product_element.select_one('img')
 
         link_tag = product_element.find('a', class_='s-item__link')
 
@@ -64,9 +60,10 @@ def scrape_ebay(query):
             'store': 'Ebay'
         }
 
-        products.append(product_details)
+        if product_details['title'] == 'Shop on eBay':
+            continue
+
+        if product_details not in products:
+            products.append(product_details)
 
     return products
-
-
-print((scrape_ebay('iphone')))

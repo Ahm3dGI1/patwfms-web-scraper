@@ -11,7 +11,7 @@ const ProductsGrid: React.FC<ProductsGridProps> = ({ products, checkedStores }) 
 
     // Filter products based on checked stores
     const filteredProducts = checkedStores.length > 0
-        ? products.filter(product => checkedStores.includes(product.site))
+        ? products.filter(product => checkedStores.includes(product.store))
         : products;
 
     return (

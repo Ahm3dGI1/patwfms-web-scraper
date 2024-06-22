@@ -9,7 +9,10 @@ import { fetchProducts } from './components/api';
 import { ProductType } from './components/Product';
 import StoreCheck from './components/StoreCheck';
 import NavBar from './components/NavBar';
+
 import RouterComponent from './providers/Router';
+import CountryProvider from './providers/CountryProvider';
+
 
 
 const App: React.FC = () => {
@@ -17,30 +20,7 @@ const App: React.FC = () => {
   const [products, setProducts] = useState<ProductType[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [checkedStores, setCheckedStores] = useState<string[]>([]);
-
-  const location = useLocation();
-
-  const getCountryFromPath = () => {
-    const path = location.pathname;
-    switch (path) {
-      case '/taiwan':
-        return 'Taiwan';
-      case '/korea':
-        return 'Korea';
-      case '/argentina':
-        return 'Argentina';
-      case '/india':
-        return 'India';
-      case '/germany':
-        return 'Germany';
-      case '/japan':
-        return 'Japan';
-      default:
-        return 'US';
-    }
-  };
-
-  const country = getCountryFromPath();
+  const [country, setCountry] = useState<string>('US');
 
   const handleSearch = async () => {
     setLoading(true);
@@ -58,6 +38,7 @@ const App: React.FC = () => {
   };
   return (
     <Router>
+      <CountryProvider setCountry={setCountry} />
       <div className="App">
         <header className="header-container">
           <NavBar />

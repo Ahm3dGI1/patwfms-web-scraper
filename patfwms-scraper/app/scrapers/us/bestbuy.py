@@ -67,6 +67,3 @@ def scrape_bestbuy(query):
         products.append(product_details)
 
     return products
-
-
-print(scrape_bestbuy('logitech keyboard')[-1])

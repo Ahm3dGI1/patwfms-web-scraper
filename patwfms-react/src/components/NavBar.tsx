@@ -25,9 +25,6 @@ function NavBar() {
         }
     };
 
-    const activeCountry = getActiveCountry();
-    console.log(`Active country: ${activeCountry}`); // Use this value to determine the API
-
     return (
         <nav className="nav-bar">
             <div className='logo'>PATWFMS</div>

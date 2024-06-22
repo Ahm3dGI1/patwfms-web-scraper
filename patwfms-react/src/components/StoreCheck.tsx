@@ -9,9 +9,13 @@ interface StoreCheckProps {
 }
 
 const storeLists: { [key: string]: string[] } = {
-    US: ['Amazon', 'Walmart', 'Best Buy', 'Target', 'Other'],
+    US: ['Amazon', 'Ebay', 'Target', 'Walmart'],
     Taiwan: ['PChome', 'Momo', 'Yahoo', 'Shopee'],
     Korea: ['Gmarket', 'Coupang', '11st', 'Auction'],
+    Japan: ['Amazon', 'Rakuten', 'Yahoo', 'BicCamera'],
+    India: ['Amazon', 'Flipkart', 'Snapdeal', 'Paytm'],
+    Germany: ['Amazon', 'Ebay', 'Otto', 'MediaMarkt'],
+    Argentina: ['MercadoLibre', 'Garbarino', 'Fravega', 'Cetrogar'],
 };
 
 const StoreCheck: React.FC<StoreCheckProps> = ({ checkedStores, setCheckedStores, country }) => {
@@ -36,6 +40,7 @@ const StoreCheck: React.FC<StoreCheckProps> = ({ checkedStores, setCheckedStores
                             onClick={() => handleCheck(store)}
                             type="checkbox"
                             id={store}
+                            key={store}
                         />
                         <span>
                             {store}

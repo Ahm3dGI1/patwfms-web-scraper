@@ -22,13 +22,13 @@ def scrape_walmart(query):
 
     if response_base.status_code != 200:
         print(
-            f'Failed to fetch data on response 1: {response_base.status_code}')
-        return None
+            f'Failed to fetch Walmart data on response 1: {response_base.status_code}')
+        return []
 
     if response_by_price.status_code != 200:
         print(
-            f'Failed to fetch data on response 2: {response_by_price.status_code}')
-        return None
+            f'Failed to fetch Walmart data on response 2: {response_by_price.status_code}')
+        return []
 
     # Parse HTML content using BeautifulSoup
     soup_base = BeautifulSoup(response_base.text, 'html.parser')
@@ -62,6 +62,7 @@ def scrape_walmart(query):
             'store': 'Walmart'
         }
 
-        products.append(product_details)
+        if product_details not in products:
+            products.append(product_details)
 
     return products
