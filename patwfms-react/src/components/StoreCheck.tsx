@@ -11,7 +11,7 @@ interface StoreCheckProps {
 const storeLists: { [key: string]: string[] } = {
     US: ['Amazon', 'Ebay', 'Target', 'Walmart'],
     Taiwan: ['PChome', 'Momo', 'Yahoo', 'Shopee'],
-    Korea: ['Coupang', 'Naver'],
+    Korea: ['Coupang', 'Naver', 'SSG'],
     Japan: ['Amazon', 'Rakuten', 'Yahoo', 'BicCamera'],
     India: ['Amazon', 'Flipkart', 'Snapdeal', 'Paytm'],
     Germany: ['Amazon', 'Ebay', 'Otto', 'MediaMarkt'],
