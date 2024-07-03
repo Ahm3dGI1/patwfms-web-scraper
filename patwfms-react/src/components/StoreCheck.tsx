@@ -13,9 +13,9 @@ const storeLists: { [key: string]: string[] } = {
     Taiwan: ['Yahoo'],
     Korea: ['Coupang', 'Naver', 'SSG'],
     Japan: ['Amazon', 'Rakuten'],
-    India: ['Amazon', 'Flipkart', 'Snapdeal', 'Paytm'],
-    Germany: ['Amazon', 'Ebay', 'Otto', 'MediaMarkt'],
-    Argentina: ['MercadoLibre', 'Garbarino', 'Fravega', 'Cetrogar'],
+    India: ['Amazon'],
+    Germany: ['Amazon', 'Otto'],
+    Argentina: ['MercadoLibre', 'Fravega'],
 };
 
 const StoreCheck: React.FC<StoreCheckProps> = ({ checkedStores, setCheckedStores, country }) => {
