@@ -1,29 +1,7 @@
-import React from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './NavBar.css';
 
 function NavBar() {
-    const location = useLocation();
-
-    const getActiveCountry = () => {
-        const path = location.pathname;
-        switch (path) {
-            case '/taiwan':
-                return 'Taiwan';
-            case '/korea':
-                return 'Korea';
-            case '/argentina':
-                return 'Argentina';
-            case '/india':
-                return 'India';
-            case '/germany':
-                return 'Germany';
-            case '/japan':
-                return 'Japan';
-            default:
-                return 'US';
-        }
-    };
 
     return (
         <nav className="nav-bar">
