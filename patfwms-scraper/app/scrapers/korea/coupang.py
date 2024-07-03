@@ -2,7 +2,7 @@ from bs4 import BeautifulSoup
 import requests
 
 
-def scrape_coupang(query):
+def scrape_coupang(query, limit):
     # Construct URLs for search results using the user query
     url_base = f'https://www.coupang.com/np/search?component=&q={query.replace(" ", "+")}'
 
@@ -55,5 +55,8 @@ def scrape_coupang(query):
 
         if product_details not in products:
             products.append(product_details)
+
+        if len(products) >= limit:
+            break
 
     return products
