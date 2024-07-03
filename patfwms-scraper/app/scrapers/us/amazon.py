@@ -2,7 +2,7 @@ from bs4 import BeautifulSoup
 import requests
 
 
-def scrape_amazon(query):
+def scrape_amazon(query, limit):
     # Construct URLs for search results using the user query
     url = f'https://www.amazon.com/s?k={query.replace(" ", "+")}'
 
@@ -63,5 +63,8 @@ def scrape_amazon(query):
 
         if product_details not in products:
             products.append(product_details)
+
+        if len(products) >= limit:
+            break
 
     return products

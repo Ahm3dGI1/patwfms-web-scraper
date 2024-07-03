@@ -4,8 +4,7 @@
     margin-top: 50px;
 }
 
-.search-handler input {
-    width: 50%;
+input {
     height: 30px;
     padding: 10px;
     background-color: var(--tertiary-color);
@@ -15,12 +14,30 @@
     border-radius: 5px;
 }
 
-.search-handler input::placeholder{
+input::placeholder{
     color: var(--quaternary-color);
 }
 
-.search-handler input:focus{
+input:focus{
     outline: none;
+}
+
+.search-input{
+    width: 50%;
+}
+
+.limit-handler{
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.limit-input{
+    width: 5%;
+    margin: 10px;
 }
 
 .search-handler button {

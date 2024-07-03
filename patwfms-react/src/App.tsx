@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 import './App.css';
 
 import SearchHandler from './components/SearchHandler';
 import ProductsGrid from './components/ProductGrid';
-import { fetchProducts } from './components/api';
+import { fetchProducts } from './providers/api';
 import { ProductType } from './components/Product';
 import StoreCheck from './components/StoreCheck';
 import NavBar from './components/NavBar';
@@ -19,6 +19,7 @@ const App: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [products, setProducts] = useState<ProductType[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
+  const [limitValue, setLimit] = useState<string>('10');
   const [checkedStores, setCheckedStores] = useState<string[]>([]);
   const [country, setCountry] = useState<string>('US');
 
@@ -27,7 +28,7 @@ const App: React.FC = () => {
     setProducts([]);
 
     try {
-      const data = await fetchProducts(searchQuery, country);
+      const data = await fetchProducts(searchQuery, country, limitValue);
       setProducts(data);
     } catch (error) {
       console.error('Error:', error);
@@ -48,11 +49,13 @@ const App: React.FC = () => {
             setSearchQuery={setSearchQuery}
             handleSearch={handleSearch}
             loading={loading}
+            limitValue={limitValue}
+            setLimit={setLimit}
           />
           <div className="web-title">
             <span>P</span>rices <span>A</span>cross <span>T</span>he <span>W</span>orld <span>F</span>or <span>M</span>inerva <span>S</span>tudents
           </div>
-          <div className="hum">cuz we are traveling like crazy</div>
+          <div className="hum">cuz we travel like crazy</div>
         </header>
         <div className='main-container'>
           <StoreCheck checkedStores={checkedStores} setCheckedStores={setCheckedStores} country={country} />

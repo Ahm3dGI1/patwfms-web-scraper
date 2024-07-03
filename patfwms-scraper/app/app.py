@@ -12,6 +12,7 @@ CORS(app)  # Enable CORS for all routes
 def scrape_amazon_endpoint():
     query = request.args.get('query')
     country = request.args.get('country')
+    limit = int(request.args.get('limit'))
 
     if not query:
         return jsonify({'error': 'No query parameter provided'}), 400
@@ -20,7 +21,7 @@ def scrape_amazon_endpoint():
         return jsonify({'error': 'No country parameter provided'}), 400
 
     try:
-        products = scraper.scrape(query, country)
+        products = scraper.scrape(query, country, limit)
         return jsonify(products)
     except Exception as e:
         logging.error(f"Error during scraping: {e}")

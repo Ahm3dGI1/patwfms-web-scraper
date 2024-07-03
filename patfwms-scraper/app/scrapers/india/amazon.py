@@ -2,9 +2,9 @@ from bs4 import BeautifulSoup
 import requests
 
 
-def scrape_rakuten(query, limit):
+def scrape_amazon(query, limit):
     # Construct URLs for search results using the user query
-    url = f'https://search.rakuten.co.jp/search/mall/{query.replace(" ", "+")}'
+    url = f'https://www.amazon.in/s?k={query.replace(" ", "+")}'
 
     # Define headers to mimic a browser request
     headers = {
@@ -22,34 +22,34 @@ def scrape_rakuten(query, limit):
         return []
 
     soup = BeautifulSoup(response.text, 'html.parser')
-    product_elements = soup.select('.searchresultitem')
+    product_elements = soup.select('.s-main-slot .s-result-item')
 
     products = []
 
     # Extract product_details details
     for product_element in product_elements:
-        title_tag = product_element.select_one('a', class_='title-link--3Ho6z')
+        title_tag = product_element.select_one('span', class_='a-size-medium')
 
         price_whole_tag = product_element.select_one(
-            'div.price--OX_YW')
+            'span', class_='a-price-whole')
 
-        image_tag = product_element.select_one('img', class_='image--4OaFX')
+        image_tag = product_element.select_one('img', class_='s-image')
 
-        link_tag = product_element.select_one('a', class_='title-link--3Ho6z')
+        link_tag = product_element.select_one('a', class_='a-link-normal')
 
         # Skip product_details if any of the required tags are missing
         if not all([image_tag, title_tag, price_whole_tag, link_tag]):
             continue
 
         # Combine whole and fractional parts of the price
-        price = f"${price_whole_tag.text.strip()}"
+        price = f"{price_whole_tag.text.strip()}"
 
         product_details = {
             'title': title_tag.text.strip(),
             'price': price,
             'image': image_tag['src'],
-            'url': link_tag['href'],
-            'store': 'Rakuten'
+            'url': 'https://www.amazon.in' + link_tag['href'],
+            'store': 'Amazon'
         }
 
         if len(product_details['title']) > 120:
@@ -57,7 +57,6 @@ def scrape_rakuten(query, limit):
 
         if 'SponsoredSponsored You’re seeing this ad based on the' in product_details['title'] or 'Customers frequently viewed' in product_details['title'] or 'Debug info copied.' in product_details['title']:
             continue
-
         if product_details not in products:
             products.append(product_details)
 

@@ -2,10 +2,9 @@ from bs4 import BeautifulSoup
 import requests
 
 
-def scrape_walmart(query):
+def scrape_walmart(query, limit):
     # Construct URLs for search results using the user query
     url_base = f'https://www.walmart.com/search?q={query.replace(" ", "%20")}'
-    url_by_price = f'https://www.walmart.com/search?q={query.replace(" ", "%20")}&sort=price_low'
 
     # Define headers to mimic a browser request
     headers = {
@@ -18,24 +17,16 @@ def scrape_walmart(query):
 
     # Send requests to fetch search results
     response_base = requests.get(url_base, headers=headers)
-    response_by_price = requests.get(url_by_price, headers=headers)
 
     if response_base.status_code != 200:
         print(
             f'Failed to fetch Walmart data on response 1: {response_base.status_code}')
         return []
 
-    if response_by_price.status_code != 200:
-        print(
-            f'Failed to fetch Walmart data on response 2: {response_by_price.status_code}')
-        return []
-
     # Parse HTML content using BeautifulSoup
     soup_base = BeautifulSoup(response_base.text, 'html.parser')
-    soup_by_price = BeautifulSoup(response_by_price.text, 'html.parser')
 
-    product_elements = soup_base.select(
-        'div', {'class': 'h-100 pr4-xl'}) + soup_by_price.select('div', {'class': 'h-100 pr4-xl'})
+    product_elements = soup_base.select('div', {'class': 'h-100 pr4-xl'})
 
     products = []
     # Extract product details
@@ -62,7 +53,13 @@ def scrape_walmart(query):
             'store': 'Walmart'
         }
 
+        if len(product_details['title']) > 120:
+            product_details['title'] = product_details['title'][:120] + '...'
+
         if product_details not in products:
             products.append(product_details)
+
+        if len(products) >= limit:
+            break
 
     return products

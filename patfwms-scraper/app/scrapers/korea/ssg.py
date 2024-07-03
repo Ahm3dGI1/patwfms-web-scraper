@@ -2,7 +2,7 @@ from bs4 import BeautifulSoup
 import requests
 
 
-def scrape_ssg(query):
+def scrape_ssg(query, limit):
     # Construct URLs for search results using the user query
     url_base = f'https://www.ssg.com/search.ssg?target=all&query={query.replace(" ", "%2520")}'
 
@@ -27,8 +27,6 @@ def scrape_ssg(query):
     soup_base = BeautifulSoup(response_base.text, 'html.parser')
 
     product_elements = soup_base.select('li.cunit_t232')
-
-    print(len(product_elements))
 
     products = []
     # Extract product details
@@ -58,7 +56,7 @@ def scrape_ssg(query):
         if product_details not in products:
             products.append(product_details)
 
+        if len(products) >= limit:
+            break
+
     return products
-
-
-print(len(scrape_ssg('keyboard')))

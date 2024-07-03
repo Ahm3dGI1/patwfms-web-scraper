@@ -2,7 +2,7 @@ from bs4 import BeautifulSoup
 import requests
 
 
-def scrape_ebay(query):
+def scrape_ebay(query, limit):
     # Construct URLs for search results using the user query
     url_base = f'https://www.ebay.com/sch/i.html?_from=R40&_nkw={query.replace(" ", "+")}'
     url_by_price = f'https://www.ebay.com/sch/i.html?_from=R40&_nkw={query.replace(" ", "+")}&_sop=15'
@@ -63,7 +63,13 @@ def scrape_ebay(query):
         if product_details['title'] == 'Shop on eBay':
             continue
 
+        if len(product_details['title']) > 120:
+            product_details['title'] = product_details['title'][:120] + '...'
+
         if product_details not in products:
             products.append(product_details)
+
+        if len(products) >= limit:
+            break
 
     return products

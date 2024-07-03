@@ -2,7 +2,7 @@ from bs4 import BeautifulSoup
 import requests
 
 
-def scrape_momo(query):
+def scrape_yahoo(query, limit):
     # Construct URLs for search results using the user query
     url_base = f'https://tw.buy.yahoo.com/search/product?p={query.replace(" ", "+")}'
 
@@ -24,8 +24,6 @@ def scrape_momo(query):
 
     product_elements = soup_base.select('a', class_='sc-1drl28c-1')
 
-    print(len(product_elements))
-
     products = []
     # Extract product details
     for product_element in product_elements:
@@ -36,7 +34,7 @@ def scrape_momo(query):
             'span', class_='.hFXgfs')
 
         image_tag = product_element.select_one(
-            'img', class_='')
+            'img', class_='.sc-knMnYM')
 
         link_tag = product_element
 
@@ -48,13 +46,13 @@ def scrape_momo(query):
             'price': price_tag.text,
             'image': image_tag['src'],
             'url': link_tag['href'],
-            'store': 'Naver'
+            'store': 'Yahoo'
         }
 
         if product_details not in products:
             products.append(product_details)
 
+        if len(products) >= limit:
+            break
+
     return products
-
-
-print(len(scrape_momo('iphone')))

@@ -2,7 +2,7 @@ from bs4 import BeautifulSoup
 import requests
 
 
-def scrape_naver(query):
+def scrape_naver(query, limit):
     # Construct URLs for search results using the user query
     url_base = f'https://search.shopping.naver.com/search/all?query={query.replace(" ", "%20")}'
 
@@ -57,5 +57,8 @@ def scrape_naver(query):
 
         if product_details not in products:
             products.append(product_details)
+
+        if len(products) >= limit:
+            break
 
     return products
