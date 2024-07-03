@@ -13,7 +13,13 @@ import NavBar from './components/NavBar';
 import RouterComponent from './providers/Router';
 import CountryProvider from './providers/CountryProvider';
 
+// ************************** Firebase
 
+import { initializeApp } from "firebase/app";
+import { firebaseConfig } from './firebaseConfig';
+initializeApp(firebaseConfig);
+
+// **************************
 
 const App: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState<string>('');
