@@ -21,7 +21,7 @@ from scrapers.germany import amazon
 from scrapers.germany import otto
 
 
-def scrape(query, limit, country, limit=10):
+def scrape(query, country, limit=10):
     if country == 'US':
         return amazon.scrape_amazon(query, limit) + walmart.scrape_walmart(query, limit) + target.scrape_target(query, limit) + ebay.scrape_ebay(query, limit)
 
