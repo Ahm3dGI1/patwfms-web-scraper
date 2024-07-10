@@ -9,7 +9,8 @@ CORS(app)  # Enable CORS for all routes
 
 
 @app.route('/scrape', methods=['GET'])
-def scrape_amazon_endpoint():
+def scrape_endpoint():
+    print("Scraping")
     query = request.args.get('query')
     country = request.args.get('country')
     limit = int(request.args.get('limit'))
