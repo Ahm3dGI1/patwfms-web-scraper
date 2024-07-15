@@ -1,0 +1,207 @@
+{
+    "countries":{
+        "argentina": {
+            "stores": {
+                "fravega": {
+                    "store_name": "Fravega",
+                    "base_url": "https://www.fravega.com/l/?keyword={query}",
+                    "product_selector": "li.sc-d89735b-0",
+                    "title_selector": "span.sc-4c61b9ba-0",
+                    "price_selector": "span.sc-1e4d6ffb-1",
+                    "image_selector": "img",
+                    "link_selector": "a.sc-7b87de7a-0",
+                    "url_prefix": "https://www.fravega.com"
+                },
+
+                "mercadolibre": {
+                    "store_name": "Mercadolibre",
+                    "base_url": "https://listado.mercadolibre.com.ar/{query}",
+                    "product_selector": "li.ui-search-layout__item",
+                    "title_selector": "h2.ui-search-item__title",
+                    "price_selector": "span.andes-money-amount__fraction",
+                    "image_selector": "img.ui-search-result-image",
+                    "link_selector": "a.ui-search-link",
+                    "url_prefix": ""
+                }
+            }
+        },
+        
+        "germany":{
+            "stores":{
+                "amazon": {
+                    "store_name": "Amazon Germany",
+                    "base_url": "https://www.amazon.de/s?k={query}",
+                    "product_selector": ".s-main-slot .s-result-item",
+                    "title_selector": "span.a-size-medium",
+                    "price_selector": "span.a-price-whole",
+                    "price_fraction_selector": "span.a-price-fraction",
+                    "image_selector": "img.s-image",
+                    "link_selector": "a.a-link-normal",
+                    "url_prefix": "https://www.amazon.de"
+                },
+
+                "otto": {
+                    "store_name": "Otto",
+                    "base_url": "https://www.otto.de/suche/{query}",
+                    "product_selector": "article",
+                    "title_selector": "p.find_tile__name",
+                    "price_selector": "span.find_tile__priceValue",
+                    "image_selector": "img.find_tile__productImage",
+                    "link_selector": "a.find_tile__productLink",
+                    "url_prefix": "https://www.otto.de"
+                }
+            }
+        },
+                
+        "india":{
+            "stores":{
+                "amazon": {
+                    "store_name": "Amazon India",
+                    "base_url": "https://www.amazon.in/s?k={query}",
+                    "product_selector": ".s-main-slot .s-result-item",
+                    "title_selector": "span.a-size-medium",
+                    "price_selector": "span.a-price-whole",
+                    "image_selector": "img.s-image",
+                    "link_selector": "a.a-link-normal",
+                    "url_prefix": "https://www.amazon.in"
+                }
+            }
+        },
+        
+        "japan":{
+            "stores":{
+                "amazon": {
+                    "store_name": "Amazon Japan",
+                    "base_url": "https://www.amazon.co.jp/s?k={query}",
+                    "product_selector": ".s-main-slot .s-result-item",
+                    "title_selector": "span.a-size-medium",
+                    "price_selector": "span.a-price-whole",
+                    "image_selector": "img.s-image",
+                    "link_selector": "a.a-link-normal",
+                    "url_prefix": "https://www.amazon.co.jp"
+                },
+
+                "rakuten": {
+                    "store_name": "Rakuten",
+                    "base_url": "https://search.rakuten.co.jp/search/mall/{query}",
+                    "product_selector": ".searchresultitem",
+                    "title_selector": "a.title-link--3Ho6z",
+                    "price_selector": "div.price--OX_YW",
+                    "image_selector": "img.image--4OaFX",
+                    "link_selector": "a.title-link--3Ho6z",
+                    "url_prefix": ""
+                }
+            }
+        },
+
+        "korea":{
+            "stores":{
+                "coupang": {
+                    "store_name": "Coupang",
+                    "base_url": "https://www.coupang.com/np/search?component=&q={query}",
+                    "product_selector": "li.search-product",
+                    "title_selector": "div.name",
+                    "price_selector": "strong.price-value",
+                    "image_selector": "img.search-product-wrap-img",
+                    "link_selector": "a.search-product-link",
+                    "url_prefix": "https://www.coupang.com"
+                },
+
+                "naver":{
+                    "store_name": "Naver",
+                    "base_url": "https://search.shopping.naver.com/search/all?query={query}",
+                    "product_selector": [
+                        "div.adProduct_item__1zC9h",
+                        "div.product_item__MDtDF"
+                    ],
+                    "title_selector": [
+                        ".product_link__TrAac",
+                        ".adProduct_link__NYTV9"
+                    ],
+                    "price_selector": ".price_num__S2p_v em",
+                    "image_selector": "img",
+                    "link_selector": [
+                        ".product_link__TrAac",
+                        ".adProduct_link__NYTV9"
+                    ],
+                    "url_prefix": ""
+                },
+                
+                "ssg": {
+                    "store_name": "SSG",
+                    "base_url": "https://www.ssg.com/search.ssg?target=all&query={query}",
+                    "product_selector": "li.cunit_t232",
+                    "title_selector": ".title em",
+                    "price_selector": ".ssg_price",
+                    "image_selector": ".thmb img.i1",
+                    "link_selector": ".title a",
+                    "url_prefix": "https://www.ssg.com/"
+                }
+            }
+        },
+
+        "taiwna":{
+            "stores":{
+                "yahoo":{
+                    "store_name": "Yahoo",
+                    "base_url": "https://tw.buy.yahoo.com/search/product?p={query}",
+                    "product_selector": "a.sc-1drl28c-1",
+                    "title_selector": "span.jZWZIY",
+                    "price_selector": "span.hFXgfs",
+                    "image_selector": "img.sc-knMnYM",
+                    "link_selector": "a.sc-1drl28c-1",
+                    "url_prefix": ""
+                }                
+            }
+        },
+
+        "us":{
+            "stores":{
+                "amazon": {
+                    "store_name": "Amazon",
+                    "base_url": "https://www.amazon.com/s?k={query}",
+                    "product_selector": "div.s-result-item",
+                    "title_selector": "span.a-size-medium",
+                    "price_selector": "span.a-offscreen",
+                    "image_selector": "img.s-image",
+                    "link_selector": "a.a-link-normal",
+                    "url_prefix": "https://www.amazon.com"
+                },
+                
+                "ebay": {
+                    "store_name": "Ebay",
+                    "base_url": "https://www.ebay.com/sch/i.html?_from=R40&_nkw={query}",
+                    "product_selector": "li.s-item__wrapper",
+                    "title_selector": "div.s-item__title span",
+                    "price_selector": "span.s-item__price",
+                    "image_selector": "img",
+                    "link_selector": "a.s-item__link",
+                    "url_prefix": ""
+                },
+
+                "target": {
+                    "store_name": "Target",
+                    "base_url": "https://www.target.com/s?searchTerm={query}",
+                    "product_selector": "div.sc-e56884d9-0",
+                    "title_selector": "a.sc-676073c3-0.sc-e1ae665c-1.fLytdP.bRxnjG.h-display-block.h-text-bold.h-text-bs",
+                    "price_selector": "div[data-test='@web/ProductCard/ProductCardPrice/Price']",
+                    "image_selector": "picture[data-test='@web/ProductCard/ProductCardImage/primary'] img",
+                    "link_selector": "a.sc-676073c3-0.fCfUJD.h-display-block",
+                    "url_prefix": "https://www.target.com"
+                },
+
+                "wallmart":{
+                    "store_name": "Walmart",
+                    "base_url": "https://www.walmart.com/search?q={query}",
+                    "product_selector": "div.h-100.pr4-xl",
+                    "title_selector": "a span.w_iUH7",
+                    "price_selector": "div[data-automation-id='product-price']",
+                    "image_selector": "img[data-testid='productTileImage']",
+                    "link_selector": "a.hide-sibling-opacity",
+                    "url_prefix": "https://www.walmart.com"
+                }
+            }
+        }
+
+    }
+}
