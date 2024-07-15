@@ -24,6 +24,3 @@ def scrape(query, country, limit=10):
         print(f"Found {len(results)} products so far")
 
     return results
-
-
-print(len(scrape('keyboard', 'us', 10)))
