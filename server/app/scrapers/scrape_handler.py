@@ -1,5 +1,5 @@
 import json
-from scrapers import scraper
+import scraper
 
 
 def scrape(query, country, limit=10):
