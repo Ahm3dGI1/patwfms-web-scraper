@@ -3,7 +3,6 @@ from flask_cors import CORS
 from scrapers import scrape_handler
 import logging
 
-
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
 
@@ -27,7 +26,3 @@ def scrape_endpoint():
     except Exception as e:
         logging.error(f"Error during scraping: {e}")
         return jsonify({'error': str(e)}), 500
-
-
-if __name__ == '__main__':
-    app.run(debug=True)
