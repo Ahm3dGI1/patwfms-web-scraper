@@ -1,5 +1,5 @@
 import json
-from scraper import scrape_store
+from scrapers import scraper
 
 
 def scrape(query, country, limit=10):
@@ -9,7 +9,7 @@ def scrape(query, country, limit=10):
                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
                'Connection': 'keep-alive'}
 
-    with open('server/scrapers/stores.json') as f:
+    with open('server/app/scrapers/stores.json') as f:
         configs = json.load(f)
 
     if country not in configs['countries']:
@@ -20,7 +20,7 @@ def scrape(query, country, limit=10):
     results = []
     for store_configs in stores.values():
         print(f"Scraping {store_configs['store_name']}...")
-        results += scrape_store(store_configs, query, limit, headers)
+        results += scraper.scrape_store(store_configs, query, limit, headers)
         print(f"Found {len(results)} products so far")
 
     return results

@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
-from flask_cors import CORS  # Import CORS
-from scrapers import scrape_handler  # Import the scraping function
+from flask_cors import CORS
+from scrapers import scrape_handler
 import logging
 
 
