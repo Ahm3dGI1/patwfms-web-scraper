@@ -5,7 +5,7 @@
                 "fravega": {
                     "store_name": "Fravega",
                     "base_url": "https://www.fravega.com/l/?keyword={query}",
-                    "product_selector": "li.sc-d89735b-0",
+                    "product_selector": "li",
                     "title_selector": "span.sc-4c61b9ba-0",
                     "price_selector": "span.sc-1e4d6ffb-1",
                     "image_selector": "img",
@@ -16,11 +16,11 @@
                 "mercadolibre": {
                     "store_name": "Mercadolibre",
                     "base_url": "https://listado.mercadolibre.com.ar/{query}",
-                    "product_selector": "li.ui-search-layout__item",
-                    "title_selector": "h2.ui-search-item__title",
-                    "price_selector": "span.andes-money-amount__fraction",
-                    "image_selector": "img.ui-search-result-image",
-                    "link_selector": "a.ui-search-link",
+                    "product_selector": "li",
+                    "title_selector": "h2",
+                    "price_selector": "span",
+                    "image_selector": "img",
+                    "link_selector": "a",
                     "url_prefix": ""
                 }
             }
@@ -140,16 +140,16 @@
             }
         },
 
-        "taiwna":{
+        "taiwan":{
             "stores":{
                 "yahoo":{
                     "store_name": "Yahoo",
                     "base_url": "https://tw.buy.yahoo.com/search/product?p={query}",
-                    "product_selector": "a.sc-1drl28c-1",
+                    "product_selector": "a",
                     "title_selector": "span.jZWZIY",
                     "price_selector": "span.hFXgfs",
-                    "image_selector": "img.sc-knMnYM",
-                    "link_selector": "a.sc-1drl28c-1",
+                    "image_selector": "img",
+                    "link_selector": null,
                     "url_prefix": ""
                 }                
             }
@@ -171,7 +171,7 @@
                 "ebay": {
                     "store_name": "Ebay",
                     "base_url": "https://www.ebay.com/sch/i.html?_from=R40&_nkw={query}",
-                    "product_selector": "li.s-item__wrapper",
+                    "product_selector": "li.s-item",
                     "title_selector": "div.s-item__title span",
                     "price_selector": "span.s-item__price",
                     "image_selector": "img",
@@ -193,9 +193,9 @@
                 "wallmart":{
                     "store_name": "Walmart",
                     "base_url": "https://www.walmart.com/search?q={query}",
-                    "product_selector": "div.h-100.pr4-xl",
+                    "product_selector": ["div.h-100.pr4-xl", "li.items-center"],
                     "title_selector": "a span.w_iUH7",
-                    "price_selector": "div[data-automation-id='product-price']",
+                    "price_selector": "div[data-automation-id='product-price'] span",
                     "image_selector": "img[data-testid='productTileImage']",
                     "link_selector": "a.hide-sibling-opacity",
                     "url_prefix": "https://www.walmart.com"

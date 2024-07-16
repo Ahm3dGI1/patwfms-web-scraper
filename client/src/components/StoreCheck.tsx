@@ -48,15 +48,6 @@ const StoreCheck: React.FC<StoreCheckProps> = ({ checkedStores, setCheckedStores
                     </div>
                 ))}
             </div>
-
-            <div className="sort-order">
-                <h2>Sort By</h2>
-                <select name="sort" className="sort">
-                    <option value="price">Price</option>
-                    <option value="rating">Rating</option>
-                    <option value="popularity">Popularity</option>
-                </select>
-            </div>
         </div>
     )
 }

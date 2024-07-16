@@ -34,7 +34,7 @@ const SearchHandler: React.FC<SearchHandlerProps> = ({ searchQuery, setSearchQue
             </div>
             <div className="limit-handler">
                 <span>No. of items per store</span>
-                <input className="limit-input" type="number" onChange={(e) => setLimit(e.target.value)} />
+                <input className="limit-input" type="number" value={limitValue} onChange={(e) => setLimit(e.target.value)} />
             </div>
             {loading && <p className='loading-screen'>Loading...</p>}
         </>
