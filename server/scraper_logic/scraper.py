@@ -36,9 +36,6 @@ def scrape_store(store_config, query, limit):
         else:
             product_elements = soup.select(store_config['product_selector'])
 
-        print(
-            f"Found {len(product_elements)} products on {store_config['store_name']}")
-
         for product_element in product_elements:
             # Handle multiple selectors for title, price, and link
             title_tag = None
