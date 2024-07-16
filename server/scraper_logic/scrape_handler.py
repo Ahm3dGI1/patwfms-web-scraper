@@ -5,7 +5,7 @@ from scraper_logic import scraper
 
 def scrape(query, country, limit=10):
     # Get the directory where the current script is located
-    base_path = Path(__file__).resolve().parent
+    base_path = path(__file__).resolve().parent
 
     with open(base_path/'stores.json') as f:
         configs = json.load(f)
