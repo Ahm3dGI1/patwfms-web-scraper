@@ -4,7 +4,10 @@ from scraper_logic import scraper
 
 
 def scrape(query, country, limit=10):
-    with open(path.cwd()/'server/scraper_logic/stores.json') as f:
+    # Get the directory where the current script is located
+    base_path = Path(__file__).resolve().parent
+
+    with open(base_path/'stores.json') as f:
         configs = json.load(f)
 
     if country not in configs['countries']:
