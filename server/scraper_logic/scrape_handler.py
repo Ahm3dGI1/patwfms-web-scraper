@@ -3,7 +3,7 @@ from scraper_logic import scraper
 
 
 def scrape(query, country, limit=10):
-    with open('server/scraper_logic/stores.json') as f:
+    with open('server\scraper_logic\stores.json') as f:
         configs = json.load(f)
 
     if country not in configs['countries']:
