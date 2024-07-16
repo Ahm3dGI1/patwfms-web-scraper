@@ -1,9 +1,10 @@
 import json
+from pathlib import Path as path
 from scraper_logic import scraper
 
 
 def scrape(query, country, limit=10):
-    with open(path.join(process.cwd(), 'server/scraper_logic/stores.json')) as f:
+    with open(path.cwd()/'server/scraper_logic/stores.json') as f:
         configs = json.load(f)
 
     if country not in configs['countries']:
