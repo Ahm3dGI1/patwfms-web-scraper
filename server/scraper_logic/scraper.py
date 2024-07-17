@@ -7,13 +7,13 @@ def scrape_store(store_config, query, limit):
     products = []
 
     headers = [
-        {'User-Agent': 'M'},
-
         {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.79 Safari/537.36',
          'Accept-Language': 'en-US,en;q=0.9',
          'Accept-Encoding': 'gzip, deflate, br',
          'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
-         'Connection': 'keep-alive'}
+         'Connection': 'keep-alive'},
+
+        {'User-Agent': 'M'}
     ]
 
     for i in range(2):
