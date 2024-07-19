@@ -168,6 +168,17 @@
                     "url_prefix": "https://www.amazon.com"
                 },
                 
+                "wallmart":{
+                    "store_name": "Walmart",
+                    "base_url": "https://www.walmart.com/search?q={query}",
+                    "product_selector": ["div.h-100.pr4-xl", "li.items-center"],
+                    "title_selector": "a span.w_iUH7",
+                    "price_selector": "div[data-automation-id=\"product-price\"] span.w_iUH7",
+                    "image_selector": "img[data-testid='productTileImage']",
+                    "link_selector": "a.hide-sibling-opacity",
+                    "url_prefix": "https://www.walmart.com"
+                },
+                
                 "ebay": {
                     "store_name": "Ebay",
                     "base_url": "https://www.ebay.com/sch/i.html?_from=R40&_nkw={query}",
@@ -177,28 +188,6 @@
                     "image_selector": "img",
                     "link_selector": "a.s-item__link",
                     "url_prefix": ""
-                },
-
-                "target": {
-                    "store_name": "Target",
-                    "base_url": "https://www.target.com/s?searchTerm={query}",
-                    "product_selector": "div.sc-e56884d9-0",
-                    "title_selector": "a.sc-676073c3-0.sc-e1ae665c-1.fLytdP.bRxnjG.h-display-block.h-text-bold.h-text-bs",
-                    "price_selector": "div[data-test='@web/ProductCard/ProductCardPrice/Price']",
-                    "image_selector": "picture[data-test='@web/ProductCard/ProductCardImage/primary'] img",
-                    "link_selector": "a.sc-676073c3-0.fCfUJD.h-display-block",
-                    "url_prefix": "https://www.target.com"
-                },
-
-                "wallmart":{
-                    "store_name": "Walmart",
-                    "base_url": "https://www.walmart.com/search?q={query}",
-                    "product_selector": ["div.h-100.pr4-xl", "li.items-center"],
-                    "title_selector": "a span.w_iUH7",
-                    "price_selector": "div[data-automation-id='product-price'] span",
-                    "image_selector": "img[data-testid='productTileImage']",
-                    "link_selector": "a.hide-sibling-opacity",
-                    "url_prefix": "https://www.walmart.com"
                 }
             }
         }

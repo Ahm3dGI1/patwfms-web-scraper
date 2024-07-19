@@ -4,7 +4,7 @@ from scraper_logic import scraper
 
 
 def scrape(query, country, limit=10):
-    # Get the directory where the current script is located
+    # Get the directory where the current script is located (needed to allow Vercel to find the stores.json file)
     base_path = path(__file__).resolve().parent
 
     with open(base_path/'stores.json') as f:
