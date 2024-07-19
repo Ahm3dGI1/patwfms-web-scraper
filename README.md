@@ -4,67 +4,10 @@ Welcome to the Prices Across The World For Minerva Students (PATWFMS) project! T
 
 ## Table of Contents
 
-- [Project Structure](#project-structure)
 - [Setup and Installation](#setup-and-installation)
 - [Usage](#usage)
 - [API Endpoints](#api-endpoints)
 - [Contributing](#contributing)
-
-## Project Structure
-
-PATWFMS-WEB-SCRAPER
-<br>├── patwfms-scraper
-<br>│   ├── app
-<br>│   │   ├── scrapers
-<br>│   │   │   ├── argentina
-<br>│   │   │   ├── germany
-<br>│   │   │   ├── india
-<br>│   │   │   ├── japan
-<br>│   │   │   ├── korea
-<br>│   │   │   ├── taiwan
-<br>│   │   │   ├── us
-<br>│   │   │   │   ├── amazon.py
-<br>│   │   │   │   ├── bestbuy.py
-<br>│   │   │   │   ├── ebay.py
-<br>│   │   │   │   ├── target.py
-<br>│   │   │   │   ├── walmart.py
-<br>│   │   │   │   ├── __init__.py
-<br>│   │   │   ├── scraper.py
-<br>│   │   │   ├── __pycache__
-<br>│   │   ├── app.py
-<br>├── requirements.txt
-<br>├── patwfms-react
-<br>│   ├── node_modules
-<br>│   ├── src
-<br>│   │   ├── components
-<br>│   │   │   ├── api.ts
-<br>│   │   │   ├── NavBar.css
-<br>│   │   │   ├── NavBar.tsx
-<br>│   │   │   ├── Product.css
-<br>│   │   │   ├── Product.tsx
-<br>│   │   │   ├── ProductGrid.tsx
-<br>│   │   │   ├── SearchHandler.css
-<br>│   │   │   ├── SearchHandler.tsx
-<br>│   │   │   ├── StoreCheck.css
-<br>│   │   │   ├── StoreCheck.tsx
-<br>│   │   ├── providers
-<br>│   │   │   ├── CountryProvider.tsx
-<br>│   │   │   ├── Router.tsx
-<br>│   │   ├── App.css
-<br>│   │   ├── App.tsx
-<br>│   │   ├── main.tsx
-<br>│   │   ├── vite-env.d.ts
-<br>│   ├── .eslintrc.cjs
-<br>│   ├── .gitignore
-<br>│   ├── index.html
-<br>│   ├── package-lock.json
-<br>│   ├── package.json
-<br>│   ├── README.md
-<br>│   ├── tsconfig.json
-<br>│   ├── tsconfig.node.json
-<br>│   ├── vite.config.ts
-<br>├── venv
-<br>├── README.md
 
 
 ## Setup and Installation
@@ -74,8 +17,8 @@ PATWFMS-WEB-SCRAPER
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/yourusername/PATWFMS-WEB-SCRAPER.git
-   cd PATWFMS-WEB-SCRAPER/patwfms-scraper
+   git clone https://github.com/Ahm3dGI1/PATWFMS-WEB-SCRAPER.git
+   cd PATWFMS-WEB-SCRAPER/server
    ```
 
 2. **Create and activate a virtual environment:**
@@ -89,8 +32,34 @@ PATWFMS-WEB-SCRAPER
    ```bash
    pip install -r requirements.txt
    ```
+
+4. **Configure stores.json:**
+
+   Ensure the stores.json file is correctly populated with the necessary store configurations.
+
+   Json sample:
+   ```json
+   {
+      "countries":{
+         "us":{
+            "stores":{
+               "amazon": {
+                  "store_name": "Amazon",
+                  "base_url": "https://www.amazon.com/s?k={query}",
+                  "product_selector": "div.s-result-item",
+                  "title_selector": "span.a-size-medium",
+                  "price_selector": "span.a-offscreen",
+                  "image_selector": "img.s-image",
+                  "link_selector": "a.a-link-normal",
+                  "url_prefix": "https://www.amazon.com"
+               }
+            }
+         }
+      }
+   }
+   ```
    
-4. **Run the Flask application:**
+5. **Run the Flask application:**
 
    ```bash
    cd app
@@ -101,7 +70,7 @@ PATWFMS-WEB-SCRAPER
 1. **Navigate to the React application directory:**
 
    ```bash
-   cd patwfms-react
+   cd client
    ```
 
 2. **Install the required packages:**
@@ -120,7 +89,7 @@ PATWFMS-WEB-SCRAPER
 
 1. Open your browser and go to http://localhost:5173.
 
-2. Use the search bar to enter a product name and select a country.
+2. Use the search bar to enter a product name, select the maximum number of products from each store, and select a country.
 
 3. View and compare the product prices across different stores in the selected country.
 
@@ -132,10 +101,11 @@ PATWFMS-WEB-SCRAPER
 - **Parameters:**
   - `query` (required): The search query for the product.
   - `country` (required): The country code (e.g., "US", "IN").
+  - `limit` (required): number of products per store.
 
 #### Example Request:
 ```bash
-curl "http://localhost:5000/scrape?query=laptop&country=US"
+curl "http://localhost:5000/scrape?query=laptop&country=US&limit=10"
 ```
 #### Example Response
 
